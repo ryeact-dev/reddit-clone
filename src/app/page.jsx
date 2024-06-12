@@ -1,5 +1,5 @@
 import Image from 'next/image';
 
 export default function Home() {
-  return <div className='bg-red-500'>Next JS</div>;
+  return <div className='bg-green-500'>Next JS</div>;
 }

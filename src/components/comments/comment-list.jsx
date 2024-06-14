@@ -1,10 +1,12 @@
 import CommentShow from '@/components/comments/comment-show';
 
-// TODO: Get a list of comments from somewhere
-export default function CommentList({ comments }) {
+export default async function CommentList({ fetchData }) {
+  const comments = await fetchData();
+
   const topLevelComments = comments.filter(
     (comment) => comment.parentId === null
   );
+
   const renderedComments = topLevelComments.map((comment) => {
     return (
       <CommentShow

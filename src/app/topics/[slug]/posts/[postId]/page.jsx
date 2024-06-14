@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import paths from '@/paths';
+import PostShow from '@/components/posts/post-show';
 
 export default async function PostShowPage({ params }) {
   const { slug, postId } = params;
@@ -9,7 +10,7 @@ export default async function PostShowPage({ params }) {
       <Link className='underline decoration-solid' href={paths.topicShow(slug)}>
         {'< '}Back to {slug}
       </Link>
-      {/* <PostShow /> */}
+      <PostShow postId={postId} />
       {/* <CommentCreateForm postId={postId} startOpen /> */}
       {/* <CommentList comments={comments} /> */}
     </div>

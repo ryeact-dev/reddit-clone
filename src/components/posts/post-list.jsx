@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import paths from '@/paths';
 
-// TODO: Get list of posts into this component somehow
-export default function PostList() {
+export default async function PostList({ fetchData }) {
+  const posts = await fetchData();
+
   const renderedPosts = posts.map((post) => {
     const topicSlug = post.topic.slug;
 

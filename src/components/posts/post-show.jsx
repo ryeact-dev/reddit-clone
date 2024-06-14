@@ -1,4 +1,15 @@
-export default function PostShow({}) {
+import { db } from '@/db';
+import { notFound } from 'next/navigation';
+
+export default async function PostShow({ postId }) {
+  const post = await db.post.findFirst({
+    where: { id: postId },
+  });
+
+  if (!post) {
+    notFound();
+  }
+
   return (
     <div className='m-4'>
       <h1 className='text-2xl font-bold my-2'>{post.title}</h1>

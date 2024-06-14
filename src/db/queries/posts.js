@@ -10,3 +10,18 @@ export function fetchPostsByTopicSlug(slug) {
     },
   });
 }
+
+export function fetchTopPosts() {
+  return db.post.findMany({
+    include: {
+      topic: { select: { slug: true } },
+      user: { select: { name: true } },
+      _count: { select: { comments: true } },
+    },
+    orderBy: {
+      comments: {
+        _count: 'desc',
+      },
+    },
+  });
+}
